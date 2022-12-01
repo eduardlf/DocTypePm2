@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  dbmysql:
+    build:
+      context: ./docker/mysql
+    container_name: dbmysql-container
+    environment: 
+      - MYSQL_ROOT_PASSWORD=pass
+    volumes:
+      - ./mysql_data:/var/lib/mysql:rw
+    restart: always
+    ports:
+      - "3306:3306"
+  doctypepm2:
+    build:
+      context: ./
+    volumes:
+      - ./:/usr/app/src:rw
+    ports:
+      - 8080:8080
+    depends_on:
+      - dbmysql
+

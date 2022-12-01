@@ -4,18 +4,22 @@
   "description": "Primeiro teste",
   "main": "index.js",
   "scripts": {
-    "ini": "npm install && npm install pm2 -g",
+    "ini": "npm install",
     "prepm2": "tsc -build && pm2 start ecosystem.config.js",
     "pm2": "pm2 monit",
-    "postpm2": "pm2 delete 0 && pm2 delete 1",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts -a=v"
+    "postpm2": "pm2 delete 0",
+    "start": "ts-node index.ts",
+    "test": "echo \"ola mundo\" && exit 1"
   },
   "author": "Eduardo",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^18.11.10",
     "cron": "2.1.0",
+    "mysql": "^2.18.1",
     "npx": "^10.2.2",
-    "ts-node": "10.9.1"
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "10.9.1",
+    "typeorm": "^0.3.10"
   }
 }

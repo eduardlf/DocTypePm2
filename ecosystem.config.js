@@ -3,12 +3,7 @@ module.exports = {
   {
     name   : "app-mix",
     script : "./index.js",
-    args   : "novomix"
-  },
-  {
-    name   : "app-ber",
-    script : "./index.js",
-    args   : "bertex"
+    args   : "cron-novomix"
   }
 ]
 }
