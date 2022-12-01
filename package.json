@@ -1,0 +1,21 @@
+{
+  "name": "doctypepm2",
+  "version": "1.0.0",
+  "description": "Primeiro teste",
+  "main": "index.js",
+  "scripts": {
+    "ini": "npm install && npm install pm2 -g",
+    "prepm2": "tsc -build && pm2 start ecosystem.config.js",
+    "pm2": "pm2 monit",
+    "postpm2": "pm2 delete 0 && pm2 delete 1",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts -a=v"
+  },
+  "author": "Eduardo",
+  "license": "MIT",
+  "dependencies": {
+    "cron": "2.1.0",
+    "npx": "^10.2.2",
+    "ts-node": "10.9.1"
+  }
+}
