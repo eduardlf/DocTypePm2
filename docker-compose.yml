@@ -15,6 +15,7 @@ services:
   doctypepm2:
     build:
       context: ./
+    container_name: execnode-container
     volumes:
       - ./:/usr/app/src:rw
     ports:

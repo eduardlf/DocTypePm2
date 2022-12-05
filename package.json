@@ -8,18 +8,26 @@
     "prepm2": "tsc -build && pm2 start ecosystem.config.js",
     "pm2": "pm2 monit",
     "postpm2": "pm2 delete 0",
-    "start": "ts-node index.ts",
-    "test": "echo \"ola mundo\" && exit 1"
+    "sta": "ts-node src/index.ts",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "start_sus": "ts-node --transpiler sucrase/ts-node-plugin -r tsconfig-paths/register src/index.ts",
+    "test": "echo \"ola mundo\" && exit 1",
+    "typeorm": "typeorm-ts-node-commonjs -d ./src/database/nri_database.ts"
   },
   "author": "Eduardo",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^18.11.10",
-    "cron": "2.1.0",
+    "cron": "^2.1.0",
     "mysql": "^2.18.1",
-    "npx": "^10.2.2",
     "reflect-metadata": "^0.1.13",
-    "ts-node": "10.9.1",
-    "typeorm": "^0.3.10"
+    "tsconfig-paths": "^4.1.1",
+    "typeorm": "^0.3.10",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "npx": "^10.2.2",
+    "sucrase": "^3.29.0",
+    "ts-node": "^10.9.1"
   }
 }
