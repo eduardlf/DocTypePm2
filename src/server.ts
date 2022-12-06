@@ -1,29 +1,50 @@
 import express from "express";
-import { PweDataSource } from "./database/pwe_database";
-import Usuario from "./models/entity_pwe/Usuario";
+import { NodeDataSource } from "./database/nri_database";
+import Cliente from "./models/entity_nri/Cliente";
 import { Conexao } from "./utils/Conexao";
-import Log from "./utils/Log";
 
+class Server {
+    public express: express.Application;
 
-var app = express();
+    public constructor() {
+        this.express = express();
+        this.middlewares();
+        this.routes();
+        this.express.listen(8080);
+    }
 
-/* GET users listing. */
-app.get('/', function (req, res) {
+    private middlewares() {
+        this.express.use(express.json());
+    }
 
-    return res.json({ message: 'aaaa' });
+    private routes() {
+        this.express.get('/usuario', async function (req, res) {
+            await Conexao.iniciarConexao(NodeDataSource);
+            const clientes = await NodeDataSource.manager.find(Cliente);
+            return res.json(clientes);
+        });
 
-});
+        this.express.get('/usuario/:id([0-9]+)', async function (req, res) {
+            const idCliente = Number(req.params.id) ?? 0;
+            await Conexao.iniciarConexao(NodeDataSource);
+            const clientes = await NodeDataSource.manager.findOneBy(Cliente, {
+                idCliente: idCliente
+            });
+            return res.json(clientes);
+        });
 
-app.get('/usuario', async function (req, res) {
+        this.express.get('/usuario/create', async function (req, res) {
+            await Conexao.iniciarConexao(NodeDataSource);
+            const cliente = await NodeDataSource.manager.getRepository(Cliente).save(req.body);
+            return res.json(cliente);
+        });
 
-    await Conexao.iniciarConexao(PweDataSource);
+        this.express.get('/usuario/delete', async function (req, res) {
+            await Conexao.iniciarConexao(NodeDataSource);
+            const cliente = await NodeDataSource.manager.getRepository(Cliente).delete(req.body);
+            return res.json(cliente);
+        });
+    }
+}
 
-    const usuarios = await PweDataSource.manager.find(Usuario);
-
-    Log.info('passou por test');
-
-    return res.json(usuarios);
-
-});
-
-app.listen(8080);
+new Server();
