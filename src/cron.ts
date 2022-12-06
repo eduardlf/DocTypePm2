@@ -1,10 +1,10 @@
-import { Sincronizador } from "./sincronizador";
+import { Sincronizador } from "./utils/Sincronizador";
 import Log from "./utils/Log";
 
 async function cron(param: string) {
     const ini = new Sincronizador();
     var CronJob = require('cron').CronJob;
-    var job = new CronJob('*/5 * * * * *', async function () {
+    var job = new CronJob('*/15 * * * * *', async function () {
         await ini.view();
     },
         null,

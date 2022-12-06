@@ -1,8 +1,8 @@
 {
   "apps": [
     {
-      "name": "app-mix",
-      "script": "./index.js",
+      "name": "server",
+      "script": "./dist/server.js",
       "args": "cron-novomix"
     }
   ]

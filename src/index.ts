@@ -1,6 +1,6 @@
-import { Sincronizador } from "./sincronizador";
+import { Sincronizador } from "./utils/Sincronizador";
 
-async function start(){
+async function start() {
     const ini = new Sincronizador();
     await ini.view();
     process.exit();

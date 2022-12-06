@@ -1,8 +1,8 @@
-import { NodeDataSource } from "./database/nri_database";
-import { PweDataSource } from "./database/pwe_database";
-import Cliente from "./models/entity_nri/Cliente";
-import Usuario from "./models/entity_pwe/Usuario";
-import { Conexao } from "./utils/Conexao";
+import { NodeDataSource } from "../database/nri_database";
+import { PweDataSource } from "../database/pwe_database";
+import Cliente from "../models/entity_nri/Cliente";
+import Usuario from "../models/entity_pwe/Usuario";
+import { Conexao } from "./Conexao";
 
 
 export class Sincronizador {
@@ -23,7 +23,7 @@ export class Sincronizador {
         await NodeDataSource.manager.save(cliente);
     }
 
-    public async view(){
+    public async view() {
         await Conexao.iniciarConexao(NodeDataSource);
         await Conexao.iniciarConexao(PweDataSource);
 
