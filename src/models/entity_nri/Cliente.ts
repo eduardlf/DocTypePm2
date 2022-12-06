@@ -6,7 +6,7 @@ export default class Cliente {
         type: "int",
         name: "id_cliente"
     })
-    idCliente!: number
+    idCliente: number 
 
     @Column({
         type: "varchar",
@@ -14,5 +14,5 @@ export default class Cliente {
         name: "sicla",
         nullable: true
     })
-    nome: string | undefined
+    nome: string
 }

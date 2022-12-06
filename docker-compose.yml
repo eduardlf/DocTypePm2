@@ -2,24 +2,36 @@ version: '3.4'
 
 services:
   dbmysql:
-    build:
-      context: ./docker/mysql
+    image: mysql:5.7.40-debian
     container_name: dbmysql-container
-    environment: 
+    environment:
+      - MYSQL_DATABASE=basedados
       - MYSQL_ROOT_PASSWORD=pass
     volumes:
       - ./mysql_data:/var/lib/mysql:rw
     restart: always
     ports:
       - "3306:3306"
+  dbpostgres:
+    image: postgres:15.1-alpine
+    container_name: dbpostgres-container
+    environment:
+      - POSTGRES_DB=basedados
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+    volumes:
+      - ./postgres_data/data:/var/lib/postgresql/data:rw
+    restart: always
+    ports:
+      - "5435:5432"
   doctypepm2:
     build:
       context: ./
     container_name: execnode-container
     volumes:
-      - ./:/usr/app/src:rw
+      - ./src:/usr/app/src:rw
     ports:
       - 8080:8080
     depends_on:
       - dbmysql
-
+      - dbpostgres

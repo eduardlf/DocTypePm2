@@ -1,33 +1,30 @@
 {
-  "name": "doctypepm2",
-  "version": "1.0.0",
-  "description": "Primeiro teste",
-  "main": "index.js",
-  "scripts": {
-    "ini": "npm install",
-    "prepm2": "tsc -build && pm2 start ecosystem.config.js",
-    "pm2": "pm2 monit",
-    "postpm2": "pm2 delete 0",
-    "sta": "ts-node src/index.ts",
-    "start": "ts-node -r tsconfig-paths/register src/index.ts",
-    "start_sus": "ts-node --transpiler sucrase/ts-node-plugin -r tsconfig-paths/register src/index.ts",
-    "test": "echo \"ola mundo\" && exit 1",
-    "typeorm": "typeorm-ts-node-commonjs -d ./src/database/nri_database.ts"
-  },
-  "author": "Eduardo",
-  "license": "MIT",
-  "dependencies": {
-    "@types/node": "^18.11.10",
-    "cron": "^2.1.0",
-    "mysql": "^2.18.1",
-    "reflect-metadata": "^0.1.13",
-    "tsconfig-paths": "^4.1.1",
-    "typeorm": "^0.3.10",
-    "typescript": "^4.8.4"
-  },
-  "devDependencies": {
-    "npx": "^10.2.2",
-    "sucrase": "^3.29.0",
-    "ts-node": "^10.9.1"
-  }
+   "name": "doctypepm2",
+   "version": "1.0.0",
+   "description": "Primeiro teste",
+   "main": "index.js",
+   "scripts": {
+      "ini": "npm install",
+      "b": "tsc -build",
+      "d": "pm2 delete 0",
+      "pm2": "pm2 start pm2config.json",
+      "dist": "node dist/ini.js",
+      "star": "ts-node src/ini.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   },
+   "author": "Eduardo",
+   "license": "MIT",
+   "dependencies": {
+      "typescript": "4.8.4",
+      "@types/node": "^18.11.10",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.10",
+      "cron": "^2.1.0",
+      "mysql": "^2.18.1",
+      "pg": "^8.4.0"
+   },
+   "devDependencies": {
+      "npx": "^10.2.2",
+      "ts-node": "10.7.0"
+   }
 }

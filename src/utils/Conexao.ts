@@ -1,16 +1,16 @@
-// import { NodeDataSource } from "@database/nri_database";
-import { NodeDataSource } from "./../database/nri_database";
+import { DataSource } from "typeorm";
 import Log from "./Log";
 
 export class Conexao {
-    static async get() {
-        if (NodeDataSource.isInitialized) {
-            await NodeDataSource.initialize()
+    static async iniciarConexao(database: DataSource) {
+        if (!database.isInitialized) {
+            await database.initialize()
                 .then(() => {
                     Log.info("Banco iniciado!");
                 })
                 .catch((err: any) => {
-                    console.error("Error during Data Source initialization", err)
+                    Log.info("Error durante a inicializacao");
+                    console.log(err);
                 });
         }else{
             Log.info('Banco ja iniciado');

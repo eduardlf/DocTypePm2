@@ -6,7 +6,7 @@ export default class Configuracao {
         type: "int",
         name: "id_config"
     })
-    idConfig!: number
+    idConfig: number
 
     @Column({
         type: "varchar",
@@ -14,12 +14,12 @@ export default class Configuracao {
         name: "chave",
         nullable: false
     })
-    chave!: string
+    chave: string
 
     @Column({
         type: "text",
         name: "valor",
         nullable: false
     })
-    valor!: string
+    valor: string
 }

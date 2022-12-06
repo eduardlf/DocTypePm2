@@ -1,6 +1,0 @@
-FROM mysql:5.7.40-debian
-
-ENV MYSQL_DATABASE=basedados
-ENV MYSQL_TCP_PORT=3306    
-
-EXPOSE 3306

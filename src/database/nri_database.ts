@@ -10,10 +10,10 @@ export const NodeDataSource = new DataSource({
     synchronize: false,
     logging: false,
     entities: [
-        "src/models/entity_nri/**/*.ts"
+        __dirname+"/../models/entity_nri/**/*.{ts,js}"
     ],
-    subscribers: [],
     migrations: [
-        "src/migration/**/*.ts"
-    ]
+        __dirname+"/../migration/**/*.{ts,js}"
+    ],
+    subscribers: []
 });
