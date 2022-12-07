@@ -28,8 +28,6 @@ services:
     build:
       context: ./
     container_name: execnode-container
-    volumes:
-      - ./src:/usr/app/src:rw
     ports:
       - 8080:8080
     depends_on:
