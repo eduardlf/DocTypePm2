@@ -1,7 +1,5 @@
 import express from "express";
-import { NodeDataSource } from "./database/nri_database";
-import { PweDataSource } from "./database/pwe_database";
-import { Conexao } from "./utils/Conexao";
+import { Conexao } from "../../Shared/Conexao";
 import rotas from "./routes";
 
 class Server {
@@ -14,8 +12,7 @@ class Server {
     }
 
     private async middlewares() {
-        await Conexao.iniciarConexao(NodeDataSource);
-        await Conexao.iniciarConexao(PweDataSource);
+        await Conexao.iniciarConexao();
         this.express.use(express.json());
         this.express.use(rotas);
     }
