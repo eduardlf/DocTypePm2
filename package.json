@@ -5,9 +5,8 @@
    "main": "index.js",
    "scripts": {
       "prepm2": "tsc -build",
-      "pm2": "pm2 start pm2config.json",
-      "pm2del": "pm2 delete all",
-      "api": "ts-node src/server/api/index.ts",
+      "pm2": "pm2 start pm2config.json && pm2 monit",
+      "postpm2": "pm2 delete all",
       "cron": "ts-node src/server/cron/index.ts",
       "sinc": "ts-node src/server/sincronizador/index.ts",
       "typeorm": "typeorm-ts-node-commonjs -d src/database/nri_database.ts"

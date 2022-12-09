@@ -10,11 +10,6 @@ extensão do VScode obrigatória
 
 Abrir o projeto usando o container remoto
 
-Use o comando:
-```typescript
-npm run ini
-```
-
 ## Uso 
 
 Use o comando:
